@@ -1,0 +1,9 @@
+.cache
+.classpath
+.project
+extsrc
+console.devmode.log
+bin/
+target
+project/target
+.settings/
