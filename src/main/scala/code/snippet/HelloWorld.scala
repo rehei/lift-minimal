@@ -9,13 +9,7 @@ import Helpers._
 
 class HelloWorld {
 
-  // replace the contents of the element with id "time" with the date
   def render = "#time *" #> (new Date().toString() + "23565")
 
-  /*
-   lazy val date: Date = DependencyFactory.time.vend // create the date via factory
-
-   def howdy = "#time *" #> date.toString
-   */
 }
 
