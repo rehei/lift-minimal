@@ -1,4 +1,4 @@
-name := "Lift v2.6 Template Application with Bootstrap v3"
+name := "Lift Minimal Template"
 
 // set version to environment variable $tag 
 version := sys.props.getOrElse("tag", default = "0.0.0")
@@ -12,7 +12,6 @@ resolvers ++= Seq("snapshots"     at "https://oss.sonatype.org/content/repositor
                   "releases"      at "https://oss.sonatype.org/content/repositories/releases"
                  )
 
-
 unmanagedResourceDirectories in Test <+= (baseDirectory) { _ / "src/main/webapp" }
 
 scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature")
@@ -20,11 +19,11 @@ scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature")
 libraryDependencies ++= {
   val liftVersion = "2.6.2"
   Seq(
-    "net.liftweb" 		%% "lift-webkit" 	% liftVersion,
-    "org.eclipse.jetty" % "jetty-runner" 	% "9.3.0.v20150612",
-    "ch.qos.logback" 	% "logback-classic" % "1.0.6",
+    "net.liftweb" %% "lift-webkit" % liftVersion,
     "org.webjars.bower" % "d3" % "3.5.6",
-    "org.webjars" % "webjars-locator" % "0.27"
+    "org.webjars" % "webjars-locator" % "0.27",
+    "com.github.jsimone" % "webapp-runner" % "7.0.57.2",
+    "ch.qos.logback" % "logback-classic" % "1.0.6"
   )
 }
 
