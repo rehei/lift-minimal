@@ -10,6 +10,7 @@ import Loc._
 import scala.language.postfixOps
 import org.webjars.WebJarAssetLocator
 import org.webjars.MultipleMatchesException
+import org.slf4j.LoggerFactory
 
 /**
  * A class that's instantiated early and run.  It allows the application
@@ -17,39 +18,22 @@ import org.webjars.MultipleMatchesException
  */
 class Boot {
   def boot {
+    LoggerFactory.getLogger(this.getClass).info("Booting...")
 
     // where to search snippet
     LiftRules.addToPackages("code")
-
-    //Show the spinny image when an Ajax call starts
-    LiftRules.ajaxStart =
-      Full(() => LiftRules.jsArtifacts.show("ajax-loader").cmd)
-
-    // Make the spinny image go away when it ends
-    LiftRules.ajaxEnd =
-      Full(() => LiftRules.jsArtifacts.hide("ajax-loader").cmd)
 
     // Force the request to be UTF-8
     LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
 
     // Use HTML5 for rendering
-    LiftRules.htmlProperties.default.set((r: Req) =>
-      new Html5Properties(r.userAgent))
+    LiftRules.htmlProperties.default.set((r: Req) => new Html5Properties(r.userAgent))
 
-    LiftRules.noticesAutoFadeOut.default.set((notices: NoticeType.Value) => {
-      notices match {
-        case NoticeType.Notice => Full((8 seconds, 4 seconds))
-        case _ => Empty
-      }
-    })
+    serveWebjars()
+  }
 
-    ResourceServer.baseResourceLocation = "META-INF"
-    ResourceServer.allow {
-      case _ => true
-    }
-
+  def serveWebjars() {
     val locator = new WebJarAssetLocator()
-
     LiftRules.statelessDispatch.prepend(NamedPF("Webjar service") {
       case r @ Req(prefix :: tail, suffx, _) if (prefix == "webjars") => {
         try {
@@ -61,7 +45,6 @@ class Boot {
         }
       }
     })
-
   }
 
 }
