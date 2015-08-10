@@ -7,4 +7,5 @@ bin/
 target
 project/target
 .settings/
-/bin/
+bin/
+deployment/

@@ -1,4 +1,4 @@
-name := "Lift Minimal Template"
+name := "Lift Minimal"
 
 // set version to environment variable $tag 
 version := sys.props.getOrElse("tag", default = "0.0.0")

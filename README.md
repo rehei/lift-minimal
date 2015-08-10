@@ -4,7 +4,6 @@ Requirement | Implementation
 ----------- | ------------
 Stand-Alone build & use | x 
 Release WAR-Archive | x 
-Release Executable | o (Tomcat-based build planned)
 Manage dependencies in one file | x 
 Manage dependencies via URL | x 
 Manage JavaScript depencensies | x
@@ -13,9 +12,9 @@ IDE: Get all sources of dependencies | x
 IDE: Run application fast & easy | x 
 IDE: Debug application fast & easy | x 
 IDE: Run tests via right-click always | x 
+Ship with JRE | x
+Windows-Service start/stop/install/uninstall | x (via Tomcat) 
 Automatically manage Third-Party-Libraries licenses | o
-Ship with JRE | o
-Windows-Service start/stop/install/uninstall | o (possible via Tomcat) 
 
 # Questions  
 - How to start test from console?
