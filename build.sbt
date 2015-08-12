@@ -29,6 +29,9 @@ libraryDependencies ++= {
     
     "org.webjars.bower" % "jquery" % "2.1.4",
     
+    "org.hibernate" % "hibernate-core" % "4.3.11.Final" % "compile",
+    "com.h2database" % "h2" % "1.4.187",
+
     "com.novocode" % "junit-interface" % "0.11" % "test", 
     "com.github.jsimone" % "webapp-runner" % "7.0.57.2" % "test"
   )
