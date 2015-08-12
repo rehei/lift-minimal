@@ -14,14 +14,13 @@ IDE: Debug application fast & easy | x
 IDE: Run tests via right-click always | x 
 Ship with JRE | x
 Windows-Service start/stop/install/uninstall | x (via Tomcat) 
+Run tests from command line | x 
 Automatically manage Third-Party-Libraries licenses | o
 
 # Questions  
-- How to start test from console?
 - Where to put hibernate config?
 - How to manage hibernate logging? 
 - How to switch between productive/test environment?
-- What examples to provide for fast setup of new projects?
 
  
  

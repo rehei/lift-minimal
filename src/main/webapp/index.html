@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-    <title>Home</title>
-  </head>
-  <body >
-    <div id="main">
-      <h2>Welcome to your project!</h2>
-      <p>
-		<span data-lift="helloWorld">
-	  		Welcome to your Lift app at <span id="time">Time goes here</span>
-		</span>
-      </p>
-    </div>
-    <script src="webjars/jquery/2.1.4/dist/jquery.min.js"></script>
-  </body>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+<title>Home</title>
+</head>
+<body>
+	<div id="main">
+		<h2>Welcome to your project!</h2>
+		<br/><br/>
+		<div>
+			Static Time: <span data-lift="MyTimeSnippet"> ... </span>
+		</div>
+		<br/>
+		<div>
+			Dynamic Time: <span data-lift="comet?type=MyTimeComet"> ... </span>
+		</div>
+	</div>
+	<script src="webjars/jquery/2.1.4/dist/jquery.min.js"></script>
+</body>
 </html>
 
