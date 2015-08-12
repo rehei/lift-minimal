@@ -6,7 +6,7 @@ Stand-Alone build & use | x
 Release WAR-Archive | x 
 Manage dependencies in one file | x 
 Manage dependencies via URL | x 
-Manage JavaScript depencensies | x
+Manage JavaScript dependencies | x
 Logging via SLF4J and Logback | x  
 IDE: Get all sources of dependencies | x
 IDE: Run application fast & easy | x 
