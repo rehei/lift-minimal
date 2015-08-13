@@ -31,6 +31,7 @@ libraryDependencies ++= {
     
     "org.hibernate" % "hibernate-core" % "4.3.11.Final" % "compile",
     "com.h2database" % "h2" % "1.4.187",
+	"org.reflections" % "reflections" % "0.9.10",
 
     "com.novocode" % "junit-interface" % "0.11" % "test", 
     "com.github.jsimone" % "webapp-runner" % "7.0.57.2" % "test"

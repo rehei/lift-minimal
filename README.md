@@ -18,9 +18,9 @@ Run tests from command line | x
 Automatically manage Third-Party-Libraries licenses | o
 
 # Questions  
-- Where to put hibernate config?
-- How to manage hibernate logging? 
-- How to switch between productive/test environment?
+- Where to put hibernate config? - e.g. /WEB-INF/hibernate.gf
+- How to manage hibernate logging?  - done
+- How to switch between productive/test environment? - via Tomcat configuration
 
  
  
