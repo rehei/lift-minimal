@@ -10,5 +10,5 @@
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="webapp.runner.launch.Main"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="./bin/ --path / --port 10080"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="lift-minimal"/>
-<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Drun.mode=production"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Drun.mode=dev"/>
 </launchConfiguration>

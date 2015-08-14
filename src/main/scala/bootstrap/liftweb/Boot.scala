@@ -13,13 +13,14 @@ import net.liftweb.http._
 import net.liftweb.sitemap.Loc._
 import net.liftweb.util._
 import net.liftweb.util.Helpers._
-import model.Person
+import code.model.Person
 import org.reflections.Reflections
 import javax.persistence.Entity
 import scala.collection.JavaConversions._
 import java.io.File
 import net.liftweb.http.provider.servlet.HTTPServletContext
 import java.net.URL
+import code.Keep
 
 /**
  * A class that's instantiated early and run.  It allows the application
@@ -49,48 +50,45 @@ class Boot {
 
     serveWebjars()
 
-    val sessionFactory = startH2(loadConfig())
+    setupDB()
+  }
 
+  def setupDB() {
+    val sessionFactory = createSessionFactory(loadConfig())
     val session = sessionFactory.openSession()
 
     val transaction = session.getTransaction()
     transaction.begin()
-
     val p1 = new Person()
     p1.name = "Heiner"
     p1.age = 5
     session.save(p1)
-
     transaction.commit()
-
     println("PERSON" + session.createQuery("FROM Person").list().map(_.asInstanceOf[Person]).get(0).age)
   }
 
   def addAnnotatedClassesFrom(cfg: Configuration) = {
-    val reflections = new Reflections("model")
-    for (x <- reflections.getTypesAnnotatedWith(classOf[Entity])) {
-      println(x)
-      cfg.addAnnotatedClass(x)
+    val path = Keep.getClass().getPackage().getName()
+    val reflections = new Reflections(path)
+    for (clazz <- reflections.getTypesAnnotatedWith(classOf[Entity])) {
+      cfg.addAnnotatedClass(clazz)
     }
   }
 
   def loadConfig() = {
     val cfg = new Configuration();
-    var resource = LiftRules.context match {
-      case context: HTTPServletContext => context.resource("/WEB-INF/hibernate.cfg.xml")
-      case _ => null
-    }
-    if (resource == null) {
-      resource = this.getClass().getResource("/hibernate.cfg.xml")
-    }
-    cfg.configure(resource)
+    val cfgFile = LiftRules.context.resource("/WEB-INF/hibernate.cfg.xml")
+    cfg.configure(cfgFile)
   }
 
-  def startH2(cfg: Configuration) = {
-    loadDriver(cfg.getProperty(HIBERNATE_CONNECTION_DRIVER))
+  def createSessionFactory(cfg: Configuration) = {
+    val driverString = cfg.getProperty(HIBERNATE_CONNECTION_DRIVER)
     val connectionString = cfg.getProperty(HIBERNATE_CONNECTION_URL)
-    H2.connection = Full(DriverManager.getConnection(connectionString))
-    H2.webserver = Full(org.h2.tools.Server.createWebServer().start())
+    loadDriver(driverString)
+    DriverManager.getConnection(connectionString)
+    if (connectionString != null && connectionString.startsWith("jdbc:h2:mem:")) {
+      org.h2.tools.Server.createWebServer().start()
+    }
     addAnnotatedClassesFrom(cfg)
     val registry = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties())
     cfg.buildSessionFactory(registry.build())
