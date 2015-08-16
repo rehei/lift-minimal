@@ -8,6 +8,13 @@ you may just fork (or copy) this project. Build, Deployment and IDE-Setup can be
 
 # IDE-Setup (Eclipse)
 
+## Get Scala-IDE
+
+```
+http://scala-ide.org/
+```
+
+
 ## Generating project files
 
 Just generate the Eclipse project files using. Pleas enote this command will 
