@@ -49,53 +49,6 @@ class Boot {
     LiftRules.htmlProperties.default.set((r: Req) => new Html5Properties(r.userAgent))
 
     serveWebjars()
-
-    setupDB()
-  }
-
-  def setupDB() {
-    val sessionFactory = createSessionFactory(loadConfig())
-    val session = sessionFactory.openSession()
-
-    val transaction = session.getTransaction()
-    transaction.begin()
-    val p1 = new Person()
-    p1.name = "Heiner"
-    p1.age = 5
-    session.save(p1)
-    transaction.commit()
-    println("PERSON" + session.createQuery("FROM Person").list().map(_.asInstanceOf[Person]).get(0).age)
-  }
-
-  def addAnnotatedClassesFrom(cfg: Configuration) = {
-    val path = Keep.getClass().getPackage().getName()
-    val reflections = new Reflections(path)
-    for (clazz <- reflections.getTypesAnnotatedWith(classOf[Entity])) {
-      cfg.addAnnotatedClass(clazz)
-    }
-  }
-
-  def loadConfig() = {
-    val cfg = new Configuration();
-    val cfgFile = LiftRules.context.resource("/WEB-INF/hibernate.cfg.xml")
-    cfg.configure(cfgFile)
-  }
-
-  def createSessionFactory(cfg: Configuration) = {
-    val driverString = cfg.getProperty(HIBERNATE_CONNECTION_DRIVER)
-    val connectionString = cfg.getProperty(HIBERNATE_CONNECTION_URL)
-    loadDriver(driverString)
-    DriverManager.getConnection(connectionString)
-    if (connectionString != null && connectionString.startsWith("jdbc:h2:mem:")) {
-      org.h2.tools.Server.createWebServer().start()
-    }
-    addAnnotatedClassesFrom(cfg)
-    val registry = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties())
-    cfg.buildSessionFactory(registry.build())
-  }
-
-  def loadDriver(driverClassName: String) {
-    Class.forName(driverClassName)
   }
 
   def serveWebjars() {
