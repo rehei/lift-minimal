@@ -104,5 +104,4 @@ $ ./deploy.sh
 # Open Issues
 
 - Manage Third-Party-Libraries licenses
-- Put webjars-serving logic into a lift plugin?
 - Put Tomcat7 bundle deployment logic into a sbt plugin? 

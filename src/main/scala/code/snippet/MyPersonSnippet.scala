@@ -1,15 +1,15 @@
 package code.snippet
 
-import code.Global
 import net.liftweb.http.S
 import code.model.Person
 import net.liftweb.util.LoanWrapper
 import scala.collection.JavaConversions._
+import com.github.rehei.lift.hibernate.Hibernate
 
 class MyPersonSnippet {
 
   def render = {
-    val session = Global.session.get
+    val session = Hibernate.session.get
     val transaction = session.getTransaction()
     transaction.begin()
     val p1 = new Person()
