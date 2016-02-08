@@ -10,7 +10,7 @@ rm -rf $DIR/deployment
 mkdir $DIR/deployment
 mkdir $DIR/deployment/tmp
 cd $DIR/deployment/tmp
-wget --no-check-certificate https://github.com/rehei/tomcat7-rehei/releases/download/7.0.63/apache-tomcat-7.0.63-windows-x64-rehei.zip
+wget --no-check-certificate https://github.com/rehei/tomcat7-rehei/releases/download/7.0.63-04/apache-tomcat-7.0.63-windows-x64-rehei.zip
 unzip apache-tomcat-7.0.63-windows-x64-rehei.zip -d $DIR/deployment/tomcat7-${APP}
 cp $DIR/target/scala-2.11/${APP}_2.11-${TAG}.war $DIR/deployment/tomcat7-${APP}/webapps/ROOT.war
 rm -rf $DIR/deployment/tmp
