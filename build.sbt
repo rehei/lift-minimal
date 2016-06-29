@@ -23,7 +23,7 @@ libraryDependencies ++= {
   val liftVersion = "2.6.2"
   Seq(
     "com.github.rehei.lift" %% "lift-webjars" % "2.6.2-01",
-    "com.github.rehei.lift" %% "lift-hibernate" % "2.6.2-01",
+    "com.github.rehei.lift" %% "lift-hibernate" % "2.6.2-15",
     "org.webjars.bower" % "jquery" % "2.1.4",
 
     "net.liftweb" %% "lift-webkit" % liftVersion,
