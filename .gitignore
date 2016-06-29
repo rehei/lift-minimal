@@ -1,6 +1,9 @@
 .cache
+.cache-main
+.cache-tests
 .classpath
 .project
+deploy-tomcat7.sh
 extsrc
 console.devmode.log
 bin/
