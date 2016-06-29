@@ -31,7 +31,7 @@ libraryDependencies ++= {
     "ch.qos.logback" % "logback-access" % "1.0.6",
      
     "com.novocode" % "junit-interface" % "0.11" % "test", 
-    "com.github.jsimone" % "webapp-runner" % "7.0.57.2" % "test"
+    "com.github.rehei" % "webapp-runner-shaded" % "7.0.57.2-01" % "provided"
   )
 }
 
