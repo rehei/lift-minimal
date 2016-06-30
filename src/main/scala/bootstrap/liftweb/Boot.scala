@@ -10,6 +10,7 @@ import net.liftweb.http.Req
 import net.liftweb.util.Vendor.valToVendor
 import com.github.rehei.lift.hibernate.Hibernate
 import code.model.Person
+import com.github.rehei.lift.hibernate.util.FileUtils
 
 /**
  * A class that's instantiated early and run.  It allows the application
@@ -30,7 +31,8 @@ class Boot {
     LiftRules.htmlProperties.default.set((r: Req) => new Html5Properties(r.userAgent))
 
     Webjars.init
-    Hibernate.init(classOf[Person].getPackage().getName())
+    val cfg = FileUtils.getDefaultHibernateConfig()
+    Hibernate.init(cfg, classOf[Person].getPackage().getName())
   }
 
 }
