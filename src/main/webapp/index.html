@@ -8,24 +8,30 @@
 <body>
 	<div id="main">
 		<h2>Welcome to your project!</h2>
-		<br/><br/>
+		<hr />
+		<hr />
 		<div>
 			Running in mode: <span data-lift="MyModeSnippet"> ... </span>
 		</div>
-		<br/>
+		<hr />
 		<div>
 			Static Time: <span data-lift="MyTimeSnippet"> ... </span>
 		</div>
-		<br/>
+		<hr />
 		<div>
 			Dynamic Time: <span data-lift="comet?type=MyTimeComet"> ... </span>
 		</div>
-		
+		<hr />
+		<div>
+			Dynamic Person: <span data-lift="comet?type=MyReactiveComet">
+				... </span>
+		</div>
+		<hr />
 		<div>
 			Person: <span data-lift="MyPersonSnippet"> ... </span>
 		</div>
 	</div>
-	
+
 	<button data-lift="MyButtonSnippet">Blub</button>
 </body>
 </html>
