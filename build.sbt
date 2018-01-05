@@ -5,7 +5,7 @@ version := sys.props.getOrElse("tag", default = "0.0.0")
 
 organization := "com.github.rehei"
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.12.4"
 
 resolvers += "snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 resolvers += "staging" at "https://oss.sonatype.org/content/repositories/staging"
@@ -22,8 +22,7 @@ containerPort := 10080
 libraryDependencies ++= {
   val liftVersion = "2.6.2"
   Seq(
-    "com.github.rehei.lift" %% "lift-webjars" % "2.6.2-01",
-    "com.github.rehei.lift" %% "lift-hibernate" % "2.6.2-15",
+    "com.github.rehei.lift" %% "lift-webjars" % "3.1.1-02",
     "org.webjars.bower" % "jquery" % "2.1.4",
 
     "net.liftweb" %% "lift-webkit" % liftVersion,

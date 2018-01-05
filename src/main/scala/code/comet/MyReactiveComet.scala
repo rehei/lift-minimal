@@ -13,31 +13,40 @@ import code.util.ReactiveModel
 import code.util.ViewUpdate
 import code.model.Person
 import code.util.ReactiveListener
+import code.util.ReactiveActor
 
-class MyReactiveComet extends CometActor with ReactiveListener {
+class MyReactiveComet extends ReactiveActor {
 
-  val person = new Person()
-  val model = new ReactiveModel(this, person)
+  val person1 = new Person()
+  val person2 = new Person()
+  val m1 = new ReactiveModel(this, person1)
+  val m2 = new ReactiveModel(this, person2)
 
   val runnable = new Runnable() {
     override def run() = {
       while (true) {
         Thread.sleep(1000)
-        model.modify(m => m.age = m.age + 1)
+        m1.modify(m => m.age = m.age + 1)
+        m2.modify(m => m.age = m.age + 3)
       }
     }
   }
 
   new Thread(runnable).start()
 
-  override def modified(viewUpdate: ViewUpdate) = {
-    partialUpdate(viewUpdate.updateCmd())
-  }
-  
   override def render = {
-    for (x <- model) yield {
-      <b>{ x.age }</b>
-    }
+    <div>
+      {
+        for (x <- m1) yield {
+          <b>{ x.age }</b>
+        }
+      }
+      {
+        for (x <- m2) yield {
+          <b>{ x.age }</b>
+        }
+      }
+    </div>
   }
 
 }
