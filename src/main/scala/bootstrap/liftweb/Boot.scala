@@ -9,6 +9,7 @@ import net.liftweb.http.LiftRulesMocker.toLiftRules
 import net.liftweb.http.Req
 import net.liftweb.util.Vendor.valToVendor
 import code.model.Person
+import code.comet.rest.MyRestService
 
 /**
  * A class that's instantiated early and run.  It allows the application
@@ -28,6 +29,10 @@ class Boot {
     // Use HTML5 for rendering
     LiftRules.htmlProperties.default.set((r: Req) => new Html5Properties(r.userAgent))
 
+    //LiftRules.setSiteMap(Site.create())
+    
+    new MyRestService().init()
+    
     Webjars.init
   }
 

@@ -8,7 +8,7 @@ import scala.xml.NodeSeq
 class MyModeSnippet {
 
   def render(blub: NodeSeq) = {
-    <strong>{ Props.mode.toString() + blub } { blub.getClass.getName }</strong>
+    <strong>{ Props.mode.toString() }</strong>
   }
 
 }
