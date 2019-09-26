@@ -9,7 +9,7 @@ import net.liftweb.http.LiftRulesMocker.toLiftRules
 import net.liftweb.http.Req
 import net.liftweb.util.Vendor.valToVendor
 import code.model.Person
-import code.comet.rest.MyRestService
+import code.rest.MyRestService
 
 /**
  * A class that's instantiated early and run.  It allows the application

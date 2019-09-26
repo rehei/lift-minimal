@@ -1,4 +1,4 @@
-package code.comet.rest
+package code.rest
 
 import net.liftweb.http.rest.RestHelper
 import net.liftweb.http.LiftRules
